@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: threadhaus
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm --prefix client install --include=dev && npm --prefix client run build
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
